@@ -2,6 +2,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sqlite3'
 
 get '/' do
 	erb "hello"
@@ -12,9 +13,10 @@ get '/new' do
 end
 
 post '/new' do
-		@content = params[:content]
-			if @content.length <= 0
+		content = params[:content]
+			if content.length <= 0
 				@error = "Typed text"
+				return erb :new
 			end
-
+					db =
 end
