@@ -12,6 +12,22 @@ end
 				init_db
 		end
 
+configure '/' do
+		init_db
+	@db.execute 'CREATE TABLE IF NOT EXISTS Posts (
+	id	INTEGER ,
+	created_date	DATA,
+	content	TEXT
+)'
+@db.execute 'CREATE TABLE IF NOT EXISTS Comments (
+	id	INTEGER ,
+	created_date	DATA,
+	content	TEXT,
+	post_id INTEGER
+)'
+
+end
+
 get '/' do
 	erb "hello"
 end
@@ -27,4 +43,6 @@ post '/new' do
 				return erb :new
 			end
 					db = execute 'insert into Posts (content, create_date) values (?, date_time())', [content]
+
+					redirect to '/'
 end
