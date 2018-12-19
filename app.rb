@@ -35,14 +35,14 @@ end
 get '/new' do
 	erb :new
 end
-
+#создаем базу данных для получения информации от new.erb
 post '/new' do
 		content = params[:content]
 			if content.length <= 0
 				@error = "Typed text"
 				return erb :new
 			end
-					db = execute 'insert into Posts (content, create_date) values (?, date_time())', [content]
+					db = execute 'insert into Posts (content, create_date) values (?, date_time())',[content]
 
 					redirect to '/'
 end
