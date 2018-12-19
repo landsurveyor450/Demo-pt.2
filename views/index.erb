@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Dot</title>
+  </head>
+  <body>
+    <h3>Latest posts:</h3>
+	<br>
+	<% @results.each do |post| %>
+		<p><%= post['contents']%>
+		<br>
+		<br>
+			Added at <%= post['created_date'] %>
+			<br>
+				<a href="/details/<%= post['id'] %>">Comments</a>
+		<hr></p>
+
+	<% end %>	
+
+
+  </body>
+</html>
