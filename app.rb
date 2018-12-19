@@ -13,4 +13,8 @@ end
 
 post '/new' do
 		@content = params [:content]
+			if @content <= 0
+				@error = "Typed text"
+			end	
+
 end
