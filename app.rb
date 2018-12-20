@@ -43,7 +43,14 @@ post '/new' do
 				@error = "Typed text"
 				return erb :new
 			end
-					db = execute 'insert into Posts (content, create_date) values (?, date_time())',[content]
+					@db = execute 'insert into Posts (content, create_date) values (?, date_time())',[content]
 
 					redirect to '/'
+end
+
+get '/details/:post_id' do
+	post_id = params[:post_id]
+		content = params[:content]
+		@db.execute 'insert into Comments (content, created_date, post_id) values (?, datetime(),?)',[content]
+		redirect to('/details/' + post_id)
 end
