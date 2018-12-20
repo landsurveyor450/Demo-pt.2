@@ -5,7 +5,31 @@
     <title>Post details</title>
   </head>
   <body>
-      
+      <p> <% @row['content'] %>
+          <br>
+          <br>
+            Added at <%= @row['create_date'] %>
+              <br>
+                <a href="/details/<%=post['id']%>">Comments</a>
+
+      </p>
+      <hr>
+      <h3>Comments</h3>
+      <%@comments.each do |comment| %>
+      <p>
+        <%= comment['content'] %>
+        <br>
+          <span style="font-size 75%; color: #999">Added at <%comment['created_date']%></span>
+
+      </p>
+      <hr>
+    <%end%>
+    <br>
+    <form action="/details/<%=@row['id']%>" method="POST" role="form">
+    <textarea name="details" class="form-control" rows="6" plaseholder="type comment here"></textarea>
+
+  <button type="submit" class="btn btn-primary">ADD</button>
+</form>
 
 
 
